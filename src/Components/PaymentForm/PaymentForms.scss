@@ -1,0 +1,64 @@
+//form control color's
+.form-control{
+  ///Design border of inputs color,size,color font and background color
+    background-color: #0460b1;
+    border: 1px solid #0460b1;
+    color: #e5eaef;
+    border-radius: 10px;
+    height: 58px; 
+  }
+
+  label {
+    display: inline-block;
+    margin-bottom: -2.5rem;
+}
+  label{
+    color: #fafafa;
+  }
+  input[type=text]:focus {
+    background-color: #0062ccde;
+    border-color: #0062ccde;
+    color: white;
+  }
+  input {
+    background-color: #0062ccde;
+    color: white;
+  }
+  
+  input:invalid { border-color: red; } input, input:valid { border-color: #0460b1; }
+  
+  //Card Credit button's design
+  .card-credit:invalid {border-color: #0460b17d; } .card-credit, .card-credit:valid { border-color: #0460b17d; }
+  /* Button inactive focus */
+  .card-credit{
+    box-shadow: 0 15px 25px rgb(0 0 0 / 51%);
+    background-color: rgba(10, 119, 237, 0.8705882353);
+    border-color: #0062cc;
+    border-radius: 8px;
+    
+    
+  }
+  /* Button activate focus */
+  .card-credit[type=text]:focus{
+    box-shadow: 0 15px 25px rgb(0 0 0 / 51%);
+    background-color: rgba(10, 119, 237, 0.8705882353);
+    
+    }
+  
+  
+  /* Button that is used to cancel the payment. */
+  .payment{
+    color: #0062ccde;
+    font-family: 'Courier New', Courier, monospace;
+    font-family: revert;
+    font-weight: 700;
+    border-width: initial;
+  }
+  
+  /* Button that is used to cancel the payment. */
+  .cancel{
+      display: block;
+      width: 100%;
+      border-color: white;
+      border-width: initial;
+  }
