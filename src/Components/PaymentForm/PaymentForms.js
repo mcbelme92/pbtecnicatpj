@@ -13,12 +13,10 @@ const PaymentForms = () => {
       var caretPosition = this.selectionStart;
       var sanitizedValue = this.value.replace(/[^0-9]/gi, "");
       var parts = [];
-
       // eslint-disable-next-line no-redeclare
       for (var i = 0, len = sanitizedValue.length; i < len; i += 4) {
         parts.push(sanitizedValue.substring(i, i + 4));
       }
-
       // eslint-disable-next-line no-redeclare
       for (var i = caretPosition - 1; i >= 0; i--) {
         // eslint-disable-next-line no-redeclare
@@ -28,7 +26,6 @@ const PaymentForms = () => {
         }
       }
       caretPosition += Math.floor(caretPosition / 4);
-
       this.value = this.lastValue = parts.join(" ");
       this.selectionStart = this.selectionEnd = caretPosition;
     };
@@ -48,11 +45,6 @@ const PaymentForms = () => {
     },
   });
 
-  //archivo json sepodria condicionar mas con un if else el cancelpayment ya que oslo tiene un valor
-  // const valores = [
-  //   { name: formik?.values.name, number: formik?.values.number },
-  // ];
-
   const cancelPayment = () => {
     if (formik.values.number) {
       toast.warn("Pago cancelado");
@@ -69,8 +61,9 @@ const PaymentForms = () => {
           <div className="form-group">
             <label htmlFor="name">Name of card holder</label>
             <input
-              title="Este campo solo puede contener letras"
+              title="Este campo solo puede contener letras SIN comas, puntos o caracteres especiales"
               pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+(?: [a-zA-ZáéíóúÁÉÍÓÚñÑ]+)*$"
+              placeholder="Howard Pinsky"
               type="text"
               id="name"
               name="name"
@@ -84,15 +77,16 @@ const PaymentForms = () => {
           <div className="form-group">
             <label htmlFor="number">Credit card number</label>
             <input
-              id="card-credit-validate"
               title="Faltan numeros"
-              type="text"
+              // pattern="{5}[0-9]+"
+              placeholder="1234 3924 2394 3294"
+              type="tel"
+              id="card-credit-validate"
               name="number"
               value={formik.values.number}
               onChange={formik.handleChange}
               error={formik.errors.number}
-              // pattern="{5}[0-9]+"
-              minLength="18"
+              minLength="19"
               maxLength="19"
               className="form-control card-credit"
             />
@@ -101,21 +95,24 @@ const PaymentForms = () => {
             <div className="form-group col-md-6">
               <label htmlFor="expiry">Expiration</label>
               <input
-                title="Este campo solo puede contener numeros es tu fecha de expiracion maximo 5 digitos"
+                title="Solo numeros o te falta algun digito"
                 pattern="[0-9]+"
+                placeholder="0225"
                 type="text"
                 name="expiry"
                 value={formik.values.expiry}
                 onChange={formik.handleChange}
                 error={formik.errors.expiry}
                 maxLength="4"
+                minLength="4"
                 className="form-control"
               />
             </div>
             <div className="form-group col-md-6">
               <label htmlFor="cvc">CVV</label>
               <input
-                title="Este campo solo puede contener numeros es tu cvv de tu tarjeta"
+                title="Solo numeros o te falta algun digito, es tu cvv de tu tarjeta"
+                placeholder="231"
                 pattern="[0-9]+"
                 type="text"
                 name="cvc"
@@ -123,6 +120,7 @@ const PaymentForms = () => {
                 onChange={formik.handleChange}
                 error={formik.errors.cvc}
                 maxLength="3"
+                minLength="3"
                 className="form-control"
               />
             </div>
@@ -174,8 +172,8 @@ function validationSchema() {
       .min(123457891234567, "Minimo 16 digitos"),
     expiry: Yup.number()
       .required("solo numeros")
-      .min(123, "Minimo 3digitos")
+      .min(1234, "Minimo 3digitos")
       .max(123456, "maximo 5 digitos"),
-    cvc: Yup.number("solo numeros").required().min(12, "Minimo 3 digitos"),
+    cvc: Yup.number("solo numeros").required().min(123, "Minimo 3 digitos"),
   };
 }

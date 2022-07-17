@@ -15,13 +15,13 @@ const CardCredit = (props) => {
             <img src={visa} alt="sss" />
           </div>
           <div className="card-number-box">
-            {formik.values.number || "*******************"}
+            {formik.values.number || "***************3294"}
           </div>
           <div className="flexbox">
             <div className="box">
               <span>Name of card</span>
               <div className="card-holder-name">
-                {formik.values.name || "Name"}
+                {formik.values.name || "Howard Pinsky"}
               </div>
             </div>
             <div className="box">

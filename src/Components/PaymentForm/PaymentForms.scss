@@ -16,14 +16,21 @@
     color: #fafafa;
   }
   input[type=text]:focus {
-    background-color: #0062ccde;
+    background-color: #0460b1;
     border-color: #0062ccde;
     color: white;
   }
-  input {
-    background-color: #0062ccde;
+  input[type=text]::placeholder{
+    // background-color: #0062ccde;
     color: white;
   }
+
+  
+  
+    
+
+  
+  
   
   input:invalid { border-color: red; } input, input:valid { border-color: #0460b1; }
   
@@ -35,15 +42,20 @@
     background-color: rgba(10, 119, 237, 0.8705882353);
     border-color: #0062cc;
     border-radius: 8px;
-    
-    
+    color: white;
   }
+  
   /* Button activate focus */
-  .card-credit[type=text]:focus{
+  .card-credit[type=tel]:focus{
     box-shadow: 0 15px 25px rgb(0 0 0 / 51%);
     background-color: rgba(10, 119, 237, 0.8705882353);
-    
+    border-color:rgba(10, 119, 237, 0.8705882353);
+    color: white;
     }
+  .card-credit::placeholder{
+    color: white;
+
+  }
   
   
   /* Button that is used to cancel the payment. */
